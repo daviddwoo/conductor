@@ -17,7 +17,7 @@ async function init() {
 
     // Convenience function to setup a webcam
     const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(500, 500, flip); // width, height, flip
+    webcam = new tmImage.Webcam(250, 250, flip); // width, height, flip
     await webcam.setup(); // request access to the webcam
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -25,11 +25,11 @@ async function init() {
     // append elements to the DOM
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     labelContainer = document.getElementById("label-container");
-    for (let i = 0; i < maxPredictions; i++) { // and class labels
-        labelContainer.appendChild(document.createElement("div"));
-        labelContainer.childNodes[i].className = 'hello'
-        // labelContainer.childNodes[i].appendChild(document.createElement("progress"))
-    }
+    // for (let i = 0; i < maxPredictions; i++) { // and class labels
+    //     labelContainer.appendChild(document.createElement("div"));
+    //     labelContainer.childNodes[i].className = 'hello'
+    //     // labelContainer.childNodes[i].appendChild(document.createElement("progress"))
+    // }
 }
 
 async function loop() {
@@ -40,35 +40,35 @@ async function loop() {
 
 let closestResult;
 
-
-
 // run the webcam image through the image model
 async function predict() {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predict(webcam.canvas);
     for (let i = 0; i < maxPredictions; i++) {
-        // console.log(prediction[i].probability.toFixed(2));
-        // console.log(prediction[i].className);
         const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
         progressBars = document.getElementById('progressContainer');
         // console.log('childNodes', progressBars.children[1].children);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
-        labelContainer.childNodes[i].style.backgroundColor = 'red';
+        // labelContainer.childNodes[i].innerHTML = classPrediction;
+        // labelContainer.childNodes[i].style.backgroundColor = 'red';
         // console.log(progressBars.children[0].children[0].style.cssText)
-        progressBars.children[i].children[0].style.cssText = `width: ${prediction[i].probability.toFixed(2) * 100}%`;
-        progressBars.children[i].children[0].innerHTML= `${prediction[i].probability.toFixed(2) * 100}%`
-        // console.log(progressBars.childNodes[i].firstChild)
-        // progressBars.childNodes[i].firstChild.style.width = `${prediction[0].probability.toFixed(2) * 100}`
-        // progressBars.childNodes[i].firstChild.style.innerHTML= `${prediction[0].probability.toFixed(2) * 100}`
-        // labelContainer.childNodes[i].style.width= `${prediction[i].probability.toFixed(2)}`;
+        progressBars.children[1].children[i].children[0].style.cssText = `width: ${prediction[i].probability.toFixed(2) * 100}%`;
+        progressBars.children[1].children[i].children[0].innerHTML= `${prediction[i].probability.toFixed(2) * 100}%`
         if (prediction[i].probability > 0.99) closestResult = prediction[i].className;
     }
+}
+
+const reset = async () => {
+    window.location.reload();
+    // await webcam.stop();
+    // document.getElementById("webcam-container").children[0].remove();
+    // webcam = new tmImage.Webcam(250, 250, true);
+    // document.getElementById("webcam-container").remove();
 }
 
 // GAME
 const config = {
   type: Phaser.AUTO,
-  width: 800,
+  width: 700,
   height: 600,
   scene: {
       preload: preload,
@@ -81,7 +81,8 @@ const config = {
           gravity: { y: 300 },
           debug: false
       }
-  }
+  },
+  parent: 'game'
 };
 
 let game = new Phaser.Game(config);

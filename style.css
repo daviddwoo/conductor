@@ -1,7 +1,32 @@
-canvas {
-  display: block;
-  margin: auto;
+body {
+  display: flex;
+  padding-top: 3rem; 
+  height: 100vh;
+  background-color: white !important;
 }
+
+canvas {
+  /* display: block;
+  margin: auto; */
+}
+
+.game-container {
+  display: flex;
+  width: 100%;
+}
+
+#game {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#game canvas {
+  box-shadow: rgba(50, 50, 93, 0.7) 0px 6px 12px -2px,
+  rgba(0, 0, 0, 0.6) 0px 3px 7px -3px;
+  border-radius: 10px;
+}
+
 
 #label-container {
   display: flex;
@@ -10,8 +35,11 @@ canvas {
   align-items: center;
 }
 
-progress {
-  height: 70px;
+#webcam-container {
+  width: 250px;
+  height: 250px;
+  box-shadow: rgba(50, 50, 93, 0.3) 0px 6px 12px -2px,
+  rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
 }
 
 .progress {
@@ -19,6 +47,47 @@ progress {
   margin: 1rem;
 }
 
+#progressContainer {
+  display: flex;
+}
+
 .progress-bar {
-  height: 100px;
+  /* height: 100px;
+  color: black; */
+}
+
+.data-bar-id {
+  margin-top: 1.3rem;
+}
+
+#data-container {
+  flex: 1;
+  /* display: flex;
+  border: 2px solid blue;
+  justify-content: center;
+  align-items: center;
+  height: 90%; */
+}
+
+#data-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  /* border: 1px solid black; */
+  height: 600px;
+  box-shadow: rgba(50, 50, 93, 0.7) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.6) 0px 3px 7px -3px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.data-bar {
+  display: flex;
+  align-items: center;
+}
+
+.data-bar-id {
+  flex: 1
 }
