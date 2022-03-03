@@ -1,26 +1,3 @@
-// Sound Recognition Model using ml5.js
-// const options = { probabilityThreshold: 0.99 };
-// const classifier = ml5.soundClassifier('SpeechCommands18w', options, modelReady);
-
-// function modelReady() {
-//   // classify sound
-//   classifier.classify(gotResult);
-// }
-
-// let closestResult;
-
-// function gotResult(error, result) {
-//   if (error) {
-//     console.log(error);
-//     return;
-//   }
-//   // log the result
-// //   console.log('result', result);
-//   let res = result.find((word) => word.confidence > 0.99);
-//   closestResult = res.label || 'hello'
-//   console.log(closestResult)
-// }
-
 // This is the exportable link that is hosted on Teachable Machine for the trained models
 const URL = "https://teachablemachine.withgoogle.com/models/NH3nuHom4/";
 
