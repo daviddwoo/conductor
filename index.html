@@ -13,8 +13,8 @@
 </head>
 <body>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
-    <div id="h2p">
-        <div id="h2p-text">HOW TO PLAY</div>
+    <div id="title">
+        <div id="title-text">HAND CONTROL</div>
     </div>
     <div class="game-container">
         <div id="game">
@@ -59,48 +59,19 @@
                     </div>
                 </div>
             </div>
-            <div id="data-container">    
-                <div id="data-wrapper">
-                    <div id="btn-wrapper">
-                        <div>
-                            <button type="button" onclick="init()" class="btn btn-success">START</button>
-                        </div>
-                        <div>
-                            <button type="button" onclick="reset()" class="btn btn-danger">RESET</button>
-                        </div>
-                    </div>
-                    <div id="webcam-container"></div>
-                <!-- <div id="label-container"></div> -->
-                    <div id="progressContainer">
-                        <div id="data-bar-names">
-                            <div class="data-bar-id">BG</div>
-                            <div class="data-bar-id">UP</div>
-                            <div class="data-bar-id">RIGHT</div>
-                            <div class="data-bar-id">LEFT</div>
-                            <div class="data-bar-id">STOP</div>
-                        </div>
-                        <div id="progress-bars">
-                            <div class="progress" style="height:30px;">
-                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                            <div class="progress" style="height:30px;">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                            <div class="progress" style="height:30px;">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                            <div class="progress" style="height:30px;">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                            <div class="progress" style="height:30px;">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
+            <div id="instr-wrapper">
+                <div id="instr-title">
 
+                </div>
+                <div id="instr-text">
+
+                </div>
+                <div id="instr-dirs">
+
+                </div>
+            </div>
+         </div>
+    </div>
     <!-- BootStrap JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
