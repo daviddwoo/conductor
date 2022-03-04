@@ -57,12 +57,8 @@ async function predict() {
     }
 }
 
-const reset = async () => {
+const reset = () => {
     window.location.reload();
-    // await webcam.stop();
-    // document.getElementById("webcam-container").children[0].remove();
-    // webcam = new tmImage.Webcam(250, 250, true);
-    // document.getElementById("webcam-container").remove();
 }
 
 // GAME

@@ -1,13 +1,20 @@
 body {
-  display: flex;
   padding-top: 3rem; 
-  height: 100vh;
+  height: auto;
   background-color: white !important;
 }
 
 canvas {
   /* display: block;
   margin: auto; */
+}
+
+#h2p {
+  text-align: center;
+}
+
+#h2p-text {
+
 }
 
 .game-container {
@@ -19,6 +26,7 @@ canvas {
   flex: 1;
   display: flex;
   justify-content: center;
+  padding-bottom: 1rem;
 }
 
 #game canvas {
@@ -38,7 +46,7 @@ canvas {
 #webcam-container {
   width: 250px;
   height: 250px;
-  box-shadow: rgba(50, 50, 93, 0.3) 0px 6px 12px -2px,
+  box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px,
   rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
 }
 
@@ -67,6 +75,9 @@ canvas {
   justify-content: center;
   align-items: center;
   height: 90%; */
+  display: flex;
+  margin-left: 1rem;
+  /* justify-content: center; */
 }
 
 #data-wrapper {
@@ -90,4 +101,13 @@ canvas {
 
 .data-bar-id {
   flex: 1
+}
+
+#btn-wrapper {
+  display: flex;
+  margin-bottom: 0.5rem;
+}
+
+#btn-wrapper div {
+  margin: 1rem;
 }
