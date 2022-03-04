@@ -8,7 +8,7 @@ body {
 }
 
 #title-text {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 .game-container {
@@ -87,7 +87,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
   width: 320px;
   /* border: 1px solid black; */
   height: 600px;
@@ -114,4 +114,8 @@ body {
 
 #btn-wrapper div {
   margin: 1rem;
+}
+
+#footer-text {
+  text-align: center;
 }
