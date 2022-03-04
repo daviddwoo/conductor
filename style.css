@@ -119,3 +119,32 @@ body {
 #footer-text {
   text-align: center;
 }
+
+#instr-title {
+  font-size: 2rem;
+  padding: 1rem;
+  border-bottom: 2px solid lightgrey;
+  width: 100%;
+  text-align: center;
+}
+
+#instr-text {
+  width: 300px;
+  margin-top: 1rem;
+}
+
+#instr-text li {
+  margin-bottom: 1rem;
+}
+
+#instr-dirs {
+  width: 100%;
+}
+
+#instr-dirs-title {
+  font-size: 2rem;
+  border-bottom: 2px solid lightgrey;
+  width: 100%;
+  padding-bottom: 1rem;
+  text-align: center;
+}
