@@ -1,6 +1,7 @@
 body {
   height: auto;
   background-color: white !important;
+  font-family: 'Lato', sans-serif !important;
 }
 
 #title {
@@ -118,6 +119,7 @@ body {
 
 #footer-text {
   text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 #instr-title {

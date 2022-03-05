@@ -86,6 +86,7 @@ let game = new Phaser.Game(config);
 let platforms;
 let player;
 let stars;
+let diamonds;
 let score = 0;
 let scoreText;
 
@@ -94,6 +95,7 @@ function preload ()
   this.load.image('sky', 'assets/sky.png');
   this.load.image('ground', 'assets/platform.png');
   this.load.image('star', 'assets/star.png');
+  this.load.image('diamond', 'assets/diamond.png');
   this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
   this.load.image('topground', 'assets/topground.png', { frameWidth: 200, frameHeight: 100 });
 }
@@ -148,21 +150,36 @@ function create ()
   });
 
   //Stars
-  stars = this.physics.add.group({
-      key: 'star',
-      repeat: 10,
-      setXY: { x: 12, y: 0, stepX: 70 }
-  });
+//   stars = this.physics.add.group({
+//       key: 'star',
+//       repeat: 10,
+//       setXY: { x: 12, y: 0, stepX: 70 }
+//   });
 
-  stars.children.iterate(function (child) {
+//   stars.children.iterate(function (child) {
 
-      child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
+//       child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
 
-  });
+//   });
 
-  this.physics.add.collider(player, platforms);
-  this.physics.add.collider(stars, platforms);
-  this.physics.add.overlap(player, stars, collectStar, null, this);
+//   this.physics.add.collider(player, platforms);
+//   this.physics.add.collider(stars, platforms);
+//   this.physics.add.overlap(player, stars, collectStar, null, this);
+
+    //Diamonds
+    diamonds = this.physics.add.group({
+        key: 'diamond',
+        repeat: 9,
+        setXY: { x: 20, y: 0, stepX: 70 }
+    });
+
+    diamonds.children.iterate(function (child) {
+        child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
+    });
+
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(diamonds, platforms);
+    this.physics.add.overlap(player, diamonds, collectDiamond, null, this);
 
   //Score
   scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
@@ -208,9 +225,17 @@ function update ()
     // }
 }
 
-function collectStar (player, star)
+// function collectStar (player, star)
+// {
+//   star.disableBody(true, true);
+//   score += 10;
+//   scoreText.setText('score: ' + score)
+// }
+
+function collectDiamond (player, diamond)
 {
-  star.disableBody(true, true);
+  diamond.disableBody(true, true);
   score += 10;
   scoreText.setText('score: ' + score)
 }
+
