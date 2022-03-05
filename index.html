@@ -6,6 +6,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
+    <link rel='stylesheet' href='https://unpkg.com/emoji.css/dist/emoji.min.css'>
+
     <!---------- Fonts ---------->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,10 +39,9 @@
             <!-- <div id="label-container"></div> -->
                 <div id="progressContainer">
                     <div id="data-bar-names">
-                        <div class="data-bar-id">BG</div>
-                        <div class="data-bar-id">UP</div>
                         <div class="data-bar-id">RIGHT</div>
                         <div class="data-bar-id">LEFT</div>
+                        <div class="data-bar-id">JUMP</div>
                         <div class="data-bar-id">STOP</div>
                     </div>
                     <div id="progress-bars">
@@ -56,9 +57,9 @@
                         <div class="progress" style="height:30px;">
                             <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
                         </div>
-                        <div class="progress" style="height:30px;">
+                        <!-- <div class="progress" style="height:30px;">
                             <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -70,7 +71,7 @@
                     <ul>
                         <li>Press Start to turn the webcam on</li>
                         <li>Use the following hand motions below to move the character!</li>
-                        <li>Collect as many diamonds as you can!</li>
+                        <li>Collect all the <span class="ec ec-gem"></span>'s!</li>
                         <li>Press Reset to start a new game</li>
                     </ul>
                 </div>
@@ -78,15 +79,15 @@
                     <div id="instr-dirs-title"><h2>HAND MOTIONS</h2></div>
                     <div id="dirs-wrapper">
                         <div class="dir">
-                            <div class="dir-text">UP</div>
-                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
-                        </div>
-                        <div class="dir">
                             <div class="dir-text">RIGHT</div>
                             <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
                         </div>
                         <div class="dir">
                             <div class="dir-text">LEFT</div>
+                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
+                        </div>
+                        <div class="dir">
+                            <div class="dir-text">JUMP</div>
                             <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
                         </div>
                         <div class="dir">

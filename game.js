@@ -1,5 +1,5 @@
 // This is the exportable link that is hosted on Teachable Machine for the trained models
-const URL = "https://teachablemachine.withgoogle.com/models/NH3nuHom4/";
+const URL = "https://teachablemachine.withgoogle.com/models/gIDWG-SyZ/";
 
 let model, webcam, labelContainer, maxPredictions, progressBars
 
@@ -115,7 +115,7 @@ function create ()
     platforms.create(i * 100, 568, 'topground').setScale(0.8).refreshBody();
   }
 
-  for (let i = 0; i < 11; i++) {
+  for (let i = 1; i < 11; i++) {
     platforms.create(400 + (30 * i), 400, 'topground').setScale(0.3).refreshBody();
   }
 
@@ -170,7 +170,7 @@ function create ()
     diamonds = this.physics.add.group({
         key: 'diamond',
         repeat: 9,
-        setXY: { x: 20, y: 0, stepX: 70 }
+        setXY: { x: 35, y: 0, stepX: 70 }
     });
 
     diamonds.children.iterate(function (child) {
@@ -191,38 +191,38 @@ function update ()
 {
   cursors = this.input.keyboard.createCursorKeys();
 
-  if (cursors.left.isDown) {
-      player.setVelocityX(-160);
-      player.anims.play('left', true);
-  }
-  else if (cursors.right.isDown) {
-      player.setVelocityX(160);
-      player.anims.play('right', true);
-  }
-  else  {
-      player.setVelocityX(0);
-      player.anims.play('turn');
-  }
+//   if (cursors.left.isDown) {
+//       player.setVelocityX(-160);
+//       player.anims.play('left', true);
+//   }
+//   else if (cursors.right.isDown) {
+//       player.setVelocityX(160);
+//       player.anims.play('right', true);
+//   }
+//   else  {
+//       player.setVelocityX(0);
+//       player.anims.play('turn');
+//   }
 
-  if (cursors.up.isDown && player.body.touching.down) {
-      player.setVelocityY(-330);
-  }
-    // if (closestResult === 'LEFT') {
-    //     player.setVelocityX(-160);
-    //     player.anims.play('left', true);
-    // }
-    // else if (closestResult === 'RIGHT') {
-    //     player.setVelocityX(160);
-    //     player.anims.play('right', true);
-    // }
-    // else if (closestResult === 'STOP') {
-    //     player.setVelocityX(0);
-    //     player.anims.play('turn');
-    // }
+//   if (cursors.up.isDown && player.body.touching.down) {
+//       player.setVelocityY(-330);
+//   }
+    if (closestResult === 'LEFT') {
+        player.setVelocityX(-160);
+        player.anims.play('left', true);
+    }
+    else if (closestResult === 'RIGHT') {
+        player.setVelocityX(160);
+        player.anims.play('right', true);
+    }
+    else if (closestResult === 'STOP') {
+        player.setVelocityX(0);
+        player.anims.play('turn');
+    }
 
-    // if (closestResult === 'UP' && player.body.touching.down) {
-    //     player.setVelocityY(-330);
-    // }
+    if (closestResult === 'JUMP' && player.body.touching.down) {
+        player.setVelocityY(-330);
+    }
 }
 
 // function collectStar (player, star)

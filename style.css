@@ -54,10 +54,9 @@ body {
   display: flex;
 }
 
-.progress-bar {
-  /* height: 100px;
-  color: black; */
-}
+/* .progress-bars {
+  margin-top: 1rem;
+} */
 
 .data-bar-id {
   margin-top: 1.3rem;
