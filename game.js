@@ -94,22 +94,32 @@ function preload ()
   this.load.image('sky', 'assets/sky.png');
   this.load.image('ground', 'assets/platform.png');
   this.load.image('star', 'assets/star.png');
-  this.load.image('bomb', 'assets/bomb.png');
   this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+  this.load.image('topground', 'assets/topground.png', { frameWidth: 200, frameHeight: 100 });
 }
 
 function create ()
 {
   this.add.image(400, 300, 'sky');
+//   let background = this.add.sprite(0, 0, 'background');
+//   background.setOrigin(0, 0);
+//   background.displayWidth = game.config.width;
+//   background.displayHeight = game.config.height;
   
   //Platforms
   platforms = this.physics.add.staticGroup();
 
-  platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+  for (let i = 0; i < 8; i++) {
+    platforms.create(i * 100, 568, 'topground').setScale(0.8).refreshBody();
+  }
 
-  platforms.create(600, 400, 'ground');
-  platforms.create(50, 250, 'ground');
-  platforms.create(750, 220, 'ground');
+  for (let i = 0; i < 11; i++) {
+    platforms.create(400 + (30 * i), 400, 'topground').setScale(0.3).refreshBody();
+  }
+
+  for (let i = 0; i < 24; i++) {
+    platforms.create(20 + (i * 10), 250, 'topground').setScale(0.3).refreshBody();
+  }
 
   //Player
   player = this.physics.add.sprite(100, 450, 'dude');
@@ -140,7 +150,7 @@ function create ()
   //Stars
   stars = this.physics.add.group({
       key: 'star',
-      repeat: 11,
+      repeat: 10,
       setXY: { x: 12, y: 0, stepX: 70 }
   });
 
@@ -164,38 +174,38 @@ function update ()
 {
   cursors = this.input.keyboard.createCursorKeys();
 
-//   if (cursors.left.isDown) {
-//       player.setVelocityX(-160);
-//       player.anims.play('left', true);
-//   }
-//   else if (cursors.right.isDown) {
-//       player.setVelocityX(160);
-//       player.anims.play('right', true);
-//   }
-//   else  {
-//       player.setVelocityX(0);
-//       player.anims.play('turn');
-//   }
+  if (cursors.left.isDown) {
+      player.setVelocityX(-160);
+      player.anims.play('left', true);
+  }
+  else if (cursors.right.isDown) {
+      player.setVelocityX(160);
+      player.anims.play('right', true);
+  }
+  else  {
+      player.setVelocityX(0);
+      player.anims.play('turn');
+  }
 
-//   if (cursors.up.isDown && player.body.touching.down) {
-//       player.setVelocityY(-330);
-//   }
-    if (closestResult === 'LEFT') {
-        player.setVelocityX(-160);
-        player.anims.play('left', true);
-    }
-    else if (closestResult === 'RIGHT') {
-        player.setVelocityX(160);
-        player.anims.play('right', true);
-    }
-    else if (closestResult === 'STOP') {
-        player.setVelocityX(0);
-        player.anims.play('turn');
-    }
+  if (cursors.up.isDown && player.body.touching.down) {
+      player.setVelocityY(-330);
+  }
+    // if (closestResult === 'LEFT') {
+    //     player.setVelocityX(-160);
+    //     player.anims.play('left', true);
+    // }
+    // else if (closestResult === 'RIGHT') {
+    //     player.setVelocityX(160);
+    //     player.anims.play('right', true);
+    // }
+    // else if (closestResult === 'STOP') {
+    //     player.setVelocityX(0);
+    //     player.anims.play('turn');
+    // }
 
-    if (closestResult === 'UP' && player.body.touching.down) {
-        player.setVelocityY(-330);
-    }
+    // if (closestResult === 'UP' && player.body.touching.down) {
+    //     player.setVelocityY(-330);
+    // }
 }
 
 function collectStar (player, star)
