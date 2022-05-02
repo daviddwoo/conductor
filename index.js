@@ -1,9 +1,10 @@
 // const express = require('express');
 import express from 'express'
 import path from 'path'
+import { dirname } from 'path';
 const app = express();
 
-app.get('/', (req, res)=> res.sendFile('index.html'));
+app.get('/', (req, res)=> res.sendFile(path.join(dirname, 'index.html')));
 
 const init = async() => {
     try {
