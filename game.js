@@ -1,67 +1,60 @@
-// This is the exportable link that is hosted on Teachable Machine for the trained models
-const URL = "https://teachablemachine.withgoogle.com/models/gIDWG-SyZ/";
+//---------------Model Configuration---------------//
 
-let model, webcam, labelContainer, maxPredictions, progressBars
+// This is the exportable link that is hosted on Teachable Machine for the trained models
+const URL = "https://teachablemachine.withgoogle.com/models/8BQE-l1Yz/";
+
+let model, webcam, labelContainer, maxPredictions, progressBars, closestResult
 
 // Load the image model and setup the webcam
-async function init() {
+const init = async () => {
     const modelURL = URL + "model.json";
     const metadataURL = URL + "metadata.json";
 
-    // load the model and metadata
-    // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-    // or files from your local hard drive
-    // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+    //Load metadata uploaded from TM
     model = await tmImage.load(modelURL, metadataURL);
     maxPredictions = model.getTotalClasses();
 
-    // Convenience function to setup a webcam
+    //Webcam functionality
     const flip = true; // whether to flip the webcam
-    webcam = new tmImage.Webcam(250, 250, flip); // width, height, flip
-    await webcam.setup(); // request access to the webcam
+    webcam = new tmImage.Webcam(250, 250, flip);
+    await webcam.setup(); 
     await webcam.play();
     window.requestAnimationFrame(loop);
 
-    // append elements to the DOM
+    //Append Webcam to DOM
     document.getElementById("webcam-container").appendChild(webcam.canvas);
     labelContainer = document.getElementById("label-container");
-    // for (let i = 0; i < maxPredictions; i++) { // and class labels
-    //     labelContainer.appendChild(document.createElement("div"));
-    //     labelContainer.childNodes[i].className = 'hello'
-    //     // labelContainer.childNodes[i].appendChild(document.createElement("progress"))
-    // }
 }
 
-async function loop() {
-    webcam.update(); // update the webcam frame
+const loop = async () => {
+    webcam.update();
     await predict();
     window.requestAnimationFrame(loop);
 }
 
-let closestResult;
-
-// run the webcam image through the image model
-async function predict() {
+//Detects which motion has the highest probability
+const predict = async () => {
     // predict can take in an image, video or canvas html element
     const prediction = await model.predict(webcam.canvas);
     for (let i = 0; i < maxPredictions; i++) {
+        //Creating probability percentages
         const classPrediction = prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+
         progressBars = document.getElementById('progressContainer');
-        // console.log('childNodes', progressBars.children[1].children);
-        // labelContainer.childNodes[i].innerHTML = classPrediction;
-        // labelContainer.childNodes[i].style.backgroundColor = 'red';
-        // console.log(progressBars.children[0].children[0].style.cssText)
         progressBars.children[1].children[i].children[0].style.cssText = `width: ${prediction[i].probability.toFixed(2) * 100}%`;
         progressBars.children[1].children[i].children[0].innerHTML= `${prediction[i].probability.toFixed(2) * 100}%`
+
+        //Updating highest probability of motion for character movement
         if (prediction[i].probability > 0.99) closestResult = prediction[i].className;
     }
 }
 
+//Reset game
 const reset = () => {
     window.location.reload();
 }
 
-// GAME
+//---------------Game configuration---------------//
 const config = {
   type: Phaser.AUTO,
   width: 700,
@@ -103,10 +96,6 @@ function preload ()
 function create ()
 {
   this.add.image(400, 300, 'sky');
-//   let background = this.add.sprite(0, 0, 'background');
-//   background.setOrigin(0, 0);
-//   background.displayWidth = game.config.width;
-//   background.displayHeight = game.config.height;
   
   //Platforms
   platforms = this.physics.add.staticGroup();
@@ -149,37 +138,20 @@ function create ()
       repeat: -1
   });
 
-  //Stars
-//   stars = this.physics.add.group({
-//       key: 'star',
-//       repeat: 10,
-//       setXY: { x: 12, y: 0, stepX: 70 }
-//   });
+  //Diamonds
+  diamonds = this.physics.add.group({
+      key: 'diamond',
+      repeat: 9,
+      setXY: { x: 35, y: 0, stepX: 70 }
+  });
 
-//   stars.children.iterate(function (child) {
+  diamonds.children.iterate(function (child) {
+      child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
+  });
 
-//       child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
-
-//   });
-
-//   this.physics.add.collider(player, platforms);
-//   this.physics.add.collider(stars, platforms);
-//   this.physics.add.overlap(player, stars, collectStar, null, this);
-
-    //Diamonds
-    diamonds = this.physics.add.group({
-        key: 'diamond',
-        repeat: 9,
-        setXY: { x: 35, y: 0, stepX: 70 }
-    });
-
-    diamonds.children.iterate(function (child) {
-        child.setBounceY(Phaser.Math.FloatBetween(0.3, 0.4));
-    });
-
-    this.physics.add.collider(player, platforms);
-    this.physics.add.collider(diamonds, platforms);
-    this.physics.add.overlap(player, diamonds, collectDiamond, null, this);
+  this.physics.add.collider(player, platforms);
+  this.physics.add.collider(diamonds, platforms);
+  this.physics.add.overlap(player, diamonds, collectDiamond, null, this);
 
   //Score
   scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
@@ -191,22 +163,6 @@ function update ()
 {
   cursors = this.input.keyboard.createCursorKeys();
 
-//   if (cursors.left.isDown) {
-//       player.setVelocityX(-160);
-//       player.anims.play('left', true);
-//   }
-//   else if (cursors.right.isDown) {
-//       player.setVelocityX(160);
-//       player.anims.play('right', true);
-//   }
-//   else  {
-//       player.setVelocityX(0);
-//       player.anims.play('turn');
-//   }
-
-//   if (cursors.up.isDown && player.body.touching.down) {
-//       player.setVelocityY(-330);
-//   }
     if (closestResult === 'LEFT') {
         player.setVelocityX(-160);
         player.anims.play('left', true);
@@ -224,13 +180,6 @@ function update ()
         player.setVelocityY(-330);
     }
 }
-
-// function collectStar (player, star)
-// {
-//   star.disableBody(true, true);
-//   score += 10;
-//   scoreText.setText('score: ' + score)
-// }
 
 function collectDiamond (player, diamond)
 {

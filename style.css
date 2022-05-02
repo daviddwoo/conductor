@@ -1,6 +1,6 @@
 body {
-  height: auto;
-  background-color: white !important;
+  height: 100vh;
+  background-color: #36486b !important;
   font-family: 'Lato', sans-serif !important;
 }
 
@@ -9,7 +9,9 @@ body {
 }
 
 #title-text {
-  font-size: 4rem;
+  font-size: 5rem;
+  font-weight: 700;
+  color: white;
 }
 
 .game-container {
@@ -18,7 +20,7 @@ body {
 }
 
 #game {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   justify-content: center;
   padding-bottom: 1rem;
@@ -43,6 +45,7 @@ body {
   height: 250px;
   box-shadow: rgba(50, 50, 93, 0.2) 0px 6px 12px -2px,
   rgba(0, 0, 0, 0.1) 0px 3px 7px -3px;
+  margin-top: 10px;
 }
 
 .progress {
@@ -52,19 +55,17 @@ body {
 
 #progressContainer {
   display: flex;
+  margin-top: 25px;
 }
-
-/* .progress-bars {
-  margin-top: 1rem;
-} */
 
 .data-bar-id {
   margin-top: 1.3rem;
 }
 
 #data-container {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
+  padding-bottom: 1rem;
   /* justify-content: center; */
 }
 
@@ -76,11 +77,12 @@ body {
   width: 320px;
   /* border: 1px solid black; */
   height: 600px;
-  margin-left: 1vw;
+  margin-left: 50px;
   box-shadow: rgba(50, 50, 93, 0.7) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.6) 0px 3px 7px -3px;
-    background-color: white;
-    border-radius: 10px;
+  background-color: white;
+  border-radius: 10px;
+
 }
 
 #instr-wrapper {
@@ -91,11 +93,11 @@ body {
   width: 320px;
   /* border: 1px solid black; */
   height: 600px;
-  margin-left: 2vw;
+  margin-left: 50px;
   box-shadow: rgba(50, 50, 93, 0.7) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.6) 0px 3px 7px -3px;
-    background-color: white;
-    border-radius: 10px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .data-bar {
@@ -119,6 +121,7 @@ body {
 #footer-text {
   text-align: center;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 #instr-title {
@@ -126,14 +129,6 @@ body {
   width: 100%;
   padding-top: 1rem;
   text-align: center;
-}
-
-#instr-title h2 {
-  /* display: inline-block;
-  background-color: black;
-  color: white;
-  padding: 0.7rem;
-  text-align: center; */
 }
 
 #instr-text {
@@ -156,24 +151,16 @@ body {
   text-align: center;
 }
 
-#instr-dirs-title h2 {
-  /* display: inline-block;
-  background-color: black;
-  color: white;
-  padding: 0.7rem;
-  text-align: center; */
-}
-
 #dirs-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .dir {
   width: 100px;
   height: 100px;
-  /* border: 1px solid black; */
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -186,7 +173,22 @@ body {
 }
 
 .dir img {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+
+@media only screen and (max-width: 1420px) {
+  #data-wrapper {
+    margin-left: 0px;
+  }
 }

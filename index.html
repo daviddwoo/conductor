@@ -19,88 +19,135 @@
 <body>
     <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script> -->
     <div id="title">
-        <div id="title-text">HAND CONTROL</div>
+        <div id="title-text">CONDUCTOR</div>
     </div>
     <div class="game-container">
-        <div id="game">
-            <script src="./game.js" ></script>
+        <div class="wrapper">
+            <div id="game">
+                <script src="./game.js" ></script>
+            </div>
+            <div id="data-container">  
+                <div id="data-wrapper">
+                    <div id="btn-wrapper">
+                        <div>
+                            <button 
+                                type="button" 
+                                onclick="init()" 
+                                class="btn btn-success"
+                            >
+                                START
+                            </button>
+                        </div>
+                        <div>
+                            <button 
+                                type="button" 
+                                onclick="reset()" 
+                                class="btn btn-danger"
+                            >
+                                RESET
+                            </button>
+                        </div>
+                    </div>
+                    <div id="webcam-container"></div>
+                <!-- <div id="label-container"></div> -->
+                    <div id="progressContainer">
+                        <div id="data-bar-names">
+                            <div class="data-bar-id">RIGHT</div>
+                            <div class="data-bar-id">LEFT</div>
+                            <div class="data-bar-id">JUMP</div>
+                            <div class="data-bar-id">STOP</div>
+                        </div>
+                        <div id="progress-bars">
+                            <div class="progress" style="height:30px;">
+                                <div 
+                                    class="progress-bar" 
+                                    role="progressbar" 
+                                    style="width: 0%;" 
+                                    aria-valuenow="0" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100"
+                                >
+                                    0%
+                                </div>
+                            </div>
+                            <div class="progress" style="height:30px;">
+                                <div 
+                                    class="progress-bar bg-success" 
+                                    role="progressbar" 
+                                    style="width: 0%;" 
+                                    aria-valuenow="0" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100"
+                                >
+                                    0%
+                                </div>
+                            </div>
+                            <div class="progress" style="height:30px;">
+                                <div 
+                                    class="progress-bar bg-info" 
+                                    role="progressbar" 
+                                    style="width: 0%;" 
+                                    aria-valuenow="0" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100"
+                                >
+                                    0%
+                                </div>
+                            </div>
+                            <div class="progress" style="height:30px;">
+                                <div 
+                                    class="progress-bar bg-warning" 
+                                    role="progressbar" 
+                                    style="width: 0%;" 
+                                    aria-valuenow="0" 
+                                    aria-valuemin="0" 
+                                    aria-valuemax="100"
+                                >
+                                    0%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="instr-wrapper">
+                    <div id="instr-title">
+                        <h2>HOW TO PLAY</h2>
+                    </div>
+                    <div id="instr-text">
+                        <ul>
+                            <li>Press Start to turn the webcam on</li>
+                            <li>Use the following hand motions below to move the character!</li>
+                            <li>Collect all the <span class="ec ec-gem"></span>'s!</li>
+                            <li>Press Reset to start a new game</li>
+                        </ul>
+                    </div>
+                    <div id="instr-dirs">
+                        <div id="instr-dirs-title"><h2>HAND MOTIONS</h2></div>
+                        <div id="dirs-wrapper">
+                            <div class="dir">
+                                <div class="dir-text">RIGHT</div>
+                                <img src='./assets/RIGHT.png'/>
+                            </div>
+                            <div class="dir">
+                                <div class="dir-text">LEFT</div>
+                                <img src='./assets/LEFT.png'/>
+                            </div>
+                            <div class="dir">
+                                <div class="dir-text">JUMP</div>
+                                <img src='./assets/JUMP.png'/>
+                            </div>
+                            <div class="dir">
+                                <div class="dir-text">STOP</div>
+                                <img src='./assets/STOP.png'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="data-container">    
-            <div id="data-wrapper">
-                <div id="btn-wrapper">
-                    <div>
-                        <button type="button" onclick="init()" class="btn btn-success">START</button>
-                    </div>
-                    <div>
-                        <button type="button" onclick="reset()" class="btn btn-danger">RESET</button>
-                    </div>
-                </div>
-                <div id="webcam-container"></div>
-            <!-- <div id="label-container"></div> -->
-                <div id="progressContainer">
-                    <div id="data-bar-names">
-                        <div class="data-bar-id">RIGHT</div>
-                        <div class="data-bar-id">LEFT</div>
-                        <div class="data-bar-id">JUMP</div>
-                        <div class="data-bar-id">STOP</div>
-                    </div>
-                    <div id="progress-bars">
-                        <div class="progress" style="height:30px;">
-                            <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
-                        <div class="progress" style="height:30px;">
-                            <div class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
-                        <div class="progress" style="height:30px;">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
-                        <div class="progress" style="height:30px;">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div>
-                        <!-- <div class="progress" style="height:30px;">
-                            <div class="progress-bar bg-danger" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-            <div id="instr-wrapper">
-                <div id="instr-title">
-                    <h2>HOW TO PLAY</h2>
-                </div>
-                <div id="instr-text">
-                    <ul>
-                        <li>Press Start to turn the webcam on</li>
-                        <li>Use the following hand motions below to move the character!</li>
-                        <li>Collect all the <span class="ec ec-gem"></span>'s!</li>
-                        <li>Press Reset to start a new game</li>
-                    </ul>
-                </div>
-                <div id="instr-dirs">
-                    <div id="instr-dirs-title"><h2>HAND MOTIONS</h2></div>
-                    <div id="dirs-wrapper">
-                        <div class="dir">
-                            <div class="dir-text">RIGHT</div>
-                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
-                        </div>
-                        <div class="dir">
-                            <div class="dir-text">LEFT</div>
-                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
-                        </div>
-                        <div class="dir">
-                            <div class="dir-text">JUMP</div>
-                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
-                        </div>
-                        <div class="dir">
-                            <div class="dir-text">STOP</div>
-                            <img src="https://media.istockphoto.com/vectors/user-avatar-profile-icon-black-vector-illustration-vector-id1209654046?k=20&m=1209654046&s=612x612&w=0&h=Atw7VdjWG8KgyST8AXXJdmBkzn0lvgqyWod9vTb2XoE="/>
-                        </div>
-                    </div>
-                </div>
-            </div>
-         </div>
     </div>
     <di id="footer">
-        <div id="footer-text">Created by David Woo | Fork at Github</div>
+        <div id="footer-text">Created by David Woo</div>
     </div>
     <!-- BootStrap JS Scripts -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
