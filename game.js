@@ -85,12 +85,12 @@ let scoreText;
 
 function preload ()
 {
-  this.load.image('sky', 'assets/sky.png');
-  this.load.image('ground', 'assets/platform.png');
-  this.load.image('star', 'assets/star.png');
-  this.load.image('diamond', 'assets/diamond.png');
-  this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
-  this.load.image('topground', 'assets/topground.png', { frameWidth: 200, frameHeight: 100 });
+  this.load.image('sky', 'public/sky.png');
+  this.load.image('ground', 'public/platform.png');
+  this.load.image('star', 'public/star.png');
+  this.load.image('diamond', 'public/diamond.png');
+  this.load.spritesheet('dude', 'public/dude.png', { frameWidth: 32, frameHeight: 48 });
+  this.load.image('topground', 'public/topground.png', { frameWidth: 200, frameHeight: 100 });
 }
 
 function create ()
