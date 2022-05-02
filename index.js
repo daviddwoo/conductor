@@ -4,7 +4,9 @@ import path from 'path'
 import { dirname } from 'path';
 const app = express();
 
-app.get('/', (req, res)=> res.sendFile(path.join(dirname, 'index.html')));
+const __dirname = path.resolve();
+
+app.get('/', (req, res)=> res.sendFile(path.join(__dirname, 'index.html')));
 
 const init = async() => {
     try {
